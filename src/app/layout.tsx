@@ -2,6 +2,8 @@ import Navbar from './components/Navbar';
 import './globals.css';
 import type { Metadata } from 'next';
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Next.js Image Gallery',
   description: 'Net Ninja tutorial series by Dave Gray',

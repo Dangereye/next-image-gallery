@@ -3,8 +3,14 @@ import type { ImagesResults } from '@/models/Images';
 import ImgConatiner from './ImgConatiner';
 import addBlurredDataUrls from '@/lib/getBase64';
 
-export default async function Gallery() {
-  const url = 'https://api.pexels.com/v1/curated';
+type Props = {
+  term?: string | undefined;
+};
+
+export default async function Gallery({ term }: Props) {
+  const url = term
+    ? `https://api.pexels.com/v1/search?query=${term}`
+    : 'https://api.pexels.com/v1/curated';
   const images: ImagesResults | undefined = await fetchImages(url);
 
   if (!images) {
